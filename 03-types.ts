@@ -45,3 +45,23 @@ function fn2(): never{
    console.log('错了')
    throw new console.error('报错了')
 }
+
+// object 表示一个js对象。在开发时一般不使用，因为在JS中一切皆为对象。
+// 在实际开发中，我们更想限制的是一个对象中包含的属性，而不是限制它是不是对象。
+//object表示一个js对象
+//{}用来指定对象中可以包含哪些属性
+//语法：  必须赋值的属性 {属性名：属性值，属性名：属性值}
+let obj1 : {a:string,b:string}
+obj1  = {a:'1',b:'5'}
+
+// ?:表示属性是可选的，即在赋值时，可以不对该属性进行赋值
+let obj2 : {name:string,age?:number,} 
+obj2  =  {name:'孙悟空'}
+
+// 假如我们要设置这样一个对象，只要求其必须具有name属性，其他属性可以随意添加。
+// 语法：[propName: string]: any
+let obj3: { name: string, age?: number,[propName:string]:unknown } 
+obj3 = {name:'孙悟空',a:1,b:'4'}
+
+
+
