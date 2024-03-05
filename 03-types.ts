@@ -41,10 +41,10 @@ function fn1(): void{
 
 // never 表示永远不会返回结果。
 // never类型可以作为函数的返回值类型，表示该函数无法返回一个值。
-function fn2(): never{
-   console.log('错了')
-   throw new console.error('报错了')
-}
+// function fn2(): never{
+//    console.log('错了')
+//    throw new console.error('报错了')
+// }
 
 // object 表示一个js对象。在开发时一般不使用，因为在JS中一切皆为对象。
 // 在实际开发中，我们更想限制的是一个对象中包含的属性，而不是限制它是不是对象。
@@ -63,5 +63,48 @@ obj2  =  {name:'孙悟空'}
 let obj3: { name: string, age?: number,[propName:string]:unknown } 
 obj3 = {name:'孙悟空',a:1,b:'4'}
 
+// array
+// string[]：表示字符串数字
+// number: [] 表示数值数组
+let arr1 :string[]
+arr1 = ['2','3']
+let arr2 :number[]
+arr2 = [1,2,3,4]
+// 还可以这样声明数组：Array<number>
+let arr3 :Array<number>
+arr3 = [12,3,3,1]
+
+// tuple
+/**
+ * 元组，就是固定长度的数组，即其中的元素个数是固定的。
+ */
+let arr4 : [string,number]
+arr4 = ['周杰伦',2]
+// arr4 = [1,'4']//错误的写法
+
+// enum枚举
+/**
+ * 将所有可能的情况一个个列出来。
+ */
+enum Gender {
+   male = 0,
+   female  =1
+}
+let people1 :{name:string,gender:0|1}
+let people2 :{name:string,gender:0|1}
+people1 =  {name : '孙悟空', gender: Gender.male}
+people2 =  {name : '猪八戒', gender: 0}
+console.log( 'enum枚举',people1.gender === people2.gender);
+
+/* 除了用 | 连接两个类型以外，还可以用 & 进行连接，
+   表示该变量要同时具有用 & 连接的所有类型的属性*/
+let person : {name:string} & {gender:Gender}
+person = {name:'小孙', gender: Gender.male}
 
 
+// （10）类型的别名
+// 可以简化类型的使用
+type myType = 1|2|3|4
+let type1 :myType
+let type2 :myType
+type1 = 2
