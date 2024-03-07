@@ -44,5 +44,18 @@
         "outDir": "./dist",
         // -outFile旁仅支持"amd"和"system"模块。
         // "outFile": "./dist/app.js"
+    // allowJs
+        // 是否对js文件编译
+    "allowJs": false,
+    // checkJs  是否对js文件进行检查
+    "checkJs": false,
+    // 是否删除注释
+    "removeComments":true,
+    // 不对代码进行编译
+    "noEmit": false,
+    // noEmitOnError 有错误的情况下不进行编译
+    "noEmitOnError": true
+
+
     }
 }
