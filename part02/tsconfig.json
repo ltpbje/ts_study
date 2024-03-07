@@ -4,15 +4,45 @@
         // "src/**/*",
         // "test/**/*",
         // "**/*"
+        "src/"
     ],
     // 定义需要排除在外的目录
-    "exclude": [
-        // "hello/**/*"
-    ],
+    // "exclude": [
+    //     // "hello/**/*"
+    // ],
     //指定被编译文件的列表，只有需要编译的文件少时才会用到
-    "files": [
-        "02-hello.ts",
-        "./hello/02-hello.ts"
-    ]
+    // "files": [
+    // ]
+    /*
+    Argument for '--target' option must be: 'es3', 'es5',
+     'es6', 'es2015', 'es2016', 'es2017', 'es2018',
+      'es2019', 'es2020', 'es2021', 'es2022', 'esnext'.
+    */
 
+    "compilerOptions": {
+        // 设置ts代码编译的目标版本
+        // ES3（默认）、ES5、ES6/ES2015、ES7/ES2016、ES2017、ES2018、ES2019、ES2020、ESNext
+        "target": "ES2015",
+        // 指定代码运行时所包含的库（宿主环境）
+        // 可选值：
+        // ES5、ES6/ES2015、ES7/ES2016、ES2017、ES2018、ES2019、
+        // ES2020、ESNext、DOM、WebWorker、ScriptHost …
+
+        // "lib": ["ES6","DOM"],
+        
+        // 设置编译后代码使用的模块化系统
+        // CommonJS、UMD、AMD、System、ES2020、ESNext、None
+        
+        "module": "ES2015",
+        // "module": "System",
+        // 指定代码运行时所包含的库（宿主环境）
+        "lib": [
+            "ES6",
+            "DOM"
+        ],
+        // 编译后文件的所在目录
+        "outDir": "./dist",
+        // -outFile旁仅支持"amd"和"system"模块。
+        // "outFile": "./dist/app.js"
+    }
 }
