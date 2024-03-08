@@ -54,8 +54,19 @@
     // 不对代码进行编译
     "noEmit": false,
     // noEmitOnError 有错误的情况下不进行编译
-    "noEmitOnError": true
-
+    "noEmitOnError": true,
+    //  strict
+    // 启用所有的严格检查，默认值为true，设置后相当于开启了所有的严格检查
+    // "strict": true,
+    // alwaysStrict
+    // 总是以严格模式对代码进行编译
+    "alwaysStrict":true,
+    // noImplicitAny
+    // 禁止隐式的any类型
+    "noImplicitAny": true,
+    // noImplicitThis
+    // 禁止类型不明确的this
+    "noImplicitThis":true
 
     }
 }
