@@ -13,7 +13,12 @@ module.exports = {
         // 指定打包文件所在目录
         path:path.resolve(__dirname,"dist"),
         // 打包后文件的文件名
-        filename:"bundle.js"
+        filename:"bundle.js",
+        // 告诉webpack不使用箭头函数
+        environment:{
+            // 为了兼容ie
+            arrowFunction:false
+        }
     },
     module:{
         rules:[
