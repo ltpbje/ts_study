@@ -10,8 +10,8 @@
             this.name = name
         }
         // 定义一个抽象方法
-//抽象方法使用abstract开头，没有方法体
-//抽象方法只能定义在抽象类中，子类必须对抽象方法进行重写
+        // 抽象方法使用abstract开头，没有方法体
+        // 抽象方法只能定义在抽象类中，子类必须对抽象方法进行重写
        abstract sayHello():void
     }
     class Dog extends Animal {
