@@ -17,7 +17,8 @@ module.exports = {
         // 告诉webpack不使用箭头函数
         environment:{
             // 为了兼容ie
-            arrowFunction:false
+            arrowFunction:false,
+            const:false
         }
     },
     module:{
