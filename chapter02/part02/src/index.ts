@@ -38,10 +38,12 @@ class ScorePannel{
     // 分数和等级所在的元素，在构造函数中进行初始化
     scoreEle :HTMLElement 
     levelEle: HTMLElement
-
-    constructor(){
+    // 定义变量限制等级
+    maxLevel :number
+    constructor(maxLevel :number = 10){
         this.scoreEle = document.querySelector('#score')!
         this.levelEle = document.querySelector('#level')!
+        this.maxLevel = maxLevel
     }
     // 添加分数
     addScore(){
@@ -49,8 +51,8 @@ class ScorePannel{
     }
 
     // 提升等级
-    addLevel(){
-        if(this.level < 5)
+    levelUp(){
+        if(this.level < this.maxLevel)
         {
             this.levelEle.innerHTML = this.level++ + ''    
         }
