@@ -8,7 +8,7 @@ class Snake{
     element:HTMLElement
     constructor(){
         this.element =  document.querySelector('#snake')!
-        this.head = document.querySelector('#snake > div') as HTMLElement 
+        this.head = document.querySelector('#snake>div') as HTMLElement 
         this.bodies = document.querySelector('#snake')!.getElementsByTagName('div')  
     }
     // 获取蛇的蛇头X坐标
@@ -17,7 +17,9 @@ class Snake{
     }
     // 获取蛇的蛇头Y坐标
     get Y(){
-        return this.head.offsetHeight
+        return this.head.offsetTop
+        // return this.head.offsetHeight
+
     }
     // 设置蛇头X坐标
     set X(value){

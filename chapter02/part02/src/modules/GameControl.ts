@@ -11,7 +11,9 @@ class GameControl{
     // 记分牌
     scorePanel: ScorePannel
     // 储存蛇移动的方向
-    direction : string = '1'
+    direction : string = 'Right'
+    // 蛇的存活状态
+    isLive :boolean = true
     constructor (){
         this.food = new Food()
         this.snake = new Snake()
@@ -22,8 +24,9 @@ class GameControl{
     init(){
     
         document.addEventListener('keydown',this.keydownHandle.bind(this))
-        console.log(this.direction)
-        
+        // console.log(this.direction)
+        this.run()
+
     }
     //创建一个键盘按下的响应函数 
     keydownHandle(event:KeyboardEvent){
@@ -34,8 +37,41 @@ class GameControl{
         // console.log(event.key);
         this.direction = event.key
         console.log(this.direction)
-        
+    
     }
-
+//     ArrowUp Up
+//     ArrowDown Down
+//     ArrowLeft Left
+//     ArrowRight Right
+    run (){
+        let X = this.snake.X
+        let Y = this.snake.Y
+        // 根据按键方向来修改X值和Y值
+        switch (this.direction) {
+            case "ArrowUp":
+            case "Up":
+                // 向上移动 top 减少
+                Y -= 10;
+                break;
+            case "ArrowDown":
+            case "Down":
+                // 向下移动 top 增加
+                Y += 10;
+                break;
+            case "ArrowLeft":
+            case "Left":
+                // 向左移动 left 减少
+                X -= 10;
+                break;
+            case "ArrowRight":
+            case "Right":
+                // 向右移动 left 增加
+                X += 10;
+                break;
+        }
+        this.snake.X=X
+        this.snake.Y=Y 
+        this.isLive && setTimeout(this.run.bind(this),300 - (this.scorePanel.level - 1)*30)
+    }
 }
 export default GameControl
