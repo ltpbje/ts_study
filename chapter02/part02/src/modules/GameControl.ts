@@ -69,8 +69,16 @@ class GameControl{
                 X += 10;
                 break;
         }
-        this.snake.X=X
-        this.snake.Y=Y 
+        try
+        {
+            this.snake.X=X
+            this.snake.Y=Y
+        }catch(e:any){
+            // 进入catch说明出现了异常 游戏结束 弹出一个提示信息
+            alert(e.message + 'GAME OVER')
+            // 将isLive 设置为 false
+            this.isLive = false
+        }
         this.isLive && setTimeout(this.run.bind(this),300 - (this.scorePanel.level - 1)*30)
     }
 }

@@ -23,10 +23,25 @@ class Snake{
     }
     // 设置蛇头X坐标
     set X(value){
+        if(this.X == value){
+            return
+        }
+        // X的值的合法范围0-290之间
+        if(value<0|| value> 290){
+            // 进入判断说明蛇撞墙了
+            throw new Error('蛇撞墙了')
+        }
         this.head.style.left = value + 'px'
     }
     // 设置蛇头Y坐标
     set Y(value){
+        if (this.Y == value) {
+            return
+        }
+        if (value < 0 || value > 290) {
+            // 进入判断说明蛇撞墙了
+            throw new Error('蛇撞墙了')
+        }
         this.head.style.top  = value +'px'
     }
     // 蛇添加身体
