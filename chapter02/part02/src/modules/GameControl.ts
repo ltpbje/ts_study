@@ -36,7 +36,7 @@ class GameControl{
         // 这些参数会插入到调用新函数时传入的参数的前面。
         // console.log(event.key);
         this.direction = event.key
-        console.log(this.direction)
+        // console.log(this.direction)
     
     }
 //     ArrowUp Up
@@ -69,6 +69,9 @@ class GameControl{
                 X += 10;
                 break;
         }
+        // 检查是否吃到
+        this.checkEat(X,Y)
+        // 检查是否撞墙
         try
         {
             this.snake.X=X
@@ -80,6 +83,19 @@ class GameControl{
             this.isLive = false
         }
         this.isLive && setTimeout(this.run.bind(this),300 - (this.scorePanel.level - 1)*30)
+    }
+    // 定义一个方法检查是否吃到
+    checkEat(X:number,Y:number){
+     if(this.food.X == X && this.food.Y == Y)    
+     {
+         console.log('吃到了')
+         // 改变食物位置
+         this.food.change()
+         // 添加一分
+         this.scorePanel.addScore()
+         // 添加身体 
+         this.snake.addBody()
+     }
     }
 }
 export default GameControl
