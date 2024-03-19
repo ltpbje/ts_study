@@ -88,7 +88,7 @@ class GameControl{
     checkEat(X:number,Y:number){
      if(this.food.X == X && this.food.Y == Y)    
      {
-         console.log('吃到了')
+        //  console.log('吃到了')
          // 改变食物位置
          this.food.change()
          // 添加一分

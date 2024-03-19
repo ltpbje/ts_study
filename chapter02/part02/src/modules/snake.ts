@@ -30,7 +30,20 @@ class Snake{
         if(value<0|| value> 290){
             // 进入判断说明蛇撞墙了
             throw new Error('蛇撞墙了')
+        } 
+        // 检查X方向是否掉头
+        if(this.bodies[1]&& (this.bodies[1] as HTMLElement).offsetLeft == value){
+            // console.log('发生了掉头')
+
+            if (value > this.X ){
+                // value > 旧值X 说明在向右掉头 所以要继续向左移动
+                 value= this.X - 10  
+            }else{
+                value = this.X + 10
+            }
         }
+        this.moveBody()
+       
         this.head.style.left = value + 'px'
     }
     // 设置蛇头Y坐标
@@ -42,6 +55,18 @@ class Snake{
             // 进入判断说明蛇撞墙了
             throw new Error('蛇撞墙了')
         }
+        // 检查Y方向是否掉头
+        if (this.bodies[1] && (this.bodies[1] as HTMLElement).offsetTop == value) {
+            // console.log('发生了掉头')
+
+            if (value > this.Y) {
+                // value > 旧值Y 说明在向下掉头 所以要继续向上移动
+                value = this.Y - 10
+            } else {
+                value = this.Y + 10
+            }
+        }
+        this.moveBody()
         this.head.style.top  = value +'px'
     }
     // 蛇添加身体
@@ -49,6 +74,17 @@ class Snake{
         // 向element中添加一个div
         // element.insertAdjacentHTML(position, text);
         this.element.insertAdjacentHTML("beforeend","<div></div>")
+    }
+    moveBody(){
+        // 从后往前遍历蛇的身体
+        for(let i = this.bodies.length-1;i>0;i--){
+            // 获取前边身体的位置
+            let X:number = (this.bodies[i-1] as HTMLElement).offsetLeft;
+            let Y:number = (this.bodies[i-1] as HTMLElement).offsetTop;
+            // 将值设置到当前身体上
+            (this.bodies[i] as HTMLElement).style.left  = X + "px";
+            (this.bodies[i] as HTMLElement).style.top  =  Y  + "px";
+        }
     }
 
 }
