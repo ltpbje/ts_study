@@ -45,6 +45,8 @@ class Snake{
         this.moveBody()
        
         this.head.style.left = value + 'px'
+        // 检查蛇头是否撞到身体
+        this.checkHeadBody()
     }
     // 设置蛇头Y坐标
     set Y(value){
@@ -68,6 +70,8 @@ class Snake{
         }
         this.moveBody()
         this.head.style.top  = value +'px'
+        // 检查蛇头是否撞到身体
+        this.checkHeadBody()
     }
     // 蛇添加身体
     addBody(){
@@ -86,6 +90,16 @@ class Snake{
             (this.bodies[i] as HTMLElement).style.top  =  Y  + "px";
         }
     }
+    // 检查蛇头是否撞到身体的方法
+    checkHeadBody(){
+        for(let i = 1;i<this.bodies.length;i++){
+            if (this.X == (this.bodies[i] as HTMLElement).offsetLeft && this.Y == (this.bodies[i] as HTMLElement).offsetTop)
+            {
+                // 进入判断说明撞到了身体
+                throw new Error('撞到身体了!!!')
+            }
+        }
 
+    }
 }
 export default Snake
